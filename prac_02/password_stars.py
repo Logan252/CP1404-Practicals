@@ -1,6 +1,6 @@
 """
 Copy password_stars.py that you wrote earlier from Sandbox into your prac_02 folder and commit
-(with a message like "Add password check program")
+(with a message like "Add password check program")v
 """
 
 min_length = 8
