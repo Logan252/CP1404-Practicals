@@ -9,7 +9,8 @@ Zero divison error occurs only when input from the denominator = 0
 if statement within the try, if 0 is given, the block starts again as is_valid_input remains false
 until the else block.
 """
-# standard exception handling pattern
+# standard exception handling pattern, realised this may not have been what was asked for and the question was more
+# focused on the if == 0:, but this standard pattern is good practice anyway or not in this scenario?
 is_valid_input = False
 while not is_valid_input:
     try:
