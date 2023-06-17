@@ -14,13 +14,16 @@ MAX_DECREASE = 0.05  # 5%
 MIN_PRICE = 0.01
 MAX_PRICE = 1000.0
 INITIAL_PRICE = 10.0
-FILENAME = "stock_output.txt"
+FILENAME = "output.txt"
 
+out_file = open(FILENAME, 'w')
 price = INITIAL_PRICE
 number_of_days = 0
-print(f"${price:,.2f}")
+# Note for self, file=out_file was the part of code I was missing, won't write to file without it
+print(f"${price:,.2f}", file=out_file)
 
 while MIN_PRICE <= price <= MAX_PRICE:
+
     number_of_days += 1
     price_change = 0
     # generate a random integer of 1 or 2
@@ -35,4 +38,6 @@ while MIN_PRICE <= price <= MAX_PRICE:
         price_change = random.uniform(-MAX_DECREASE, 0)
 
     price *= (1 + price_change)
-    print(f"On day {number_of_days}, price is {price:,.2f}")
+    print(f"On day {number_of_days}, price is {price:,.2f}", file=out_file)
+
+out_file.close()
