@@ -2,17 +2,19 @@
 CP1404/CP5632 Practical
 Data file -> lists program
 """
-
+# question did not ask to refactor 'data' but kept getting confused and has no plural.
+# Originally tried "for subject in data" but made it more confusing.
 FILENAME = "subject_data.txt"
 
 
 def main():
-    data = get_data()
-    print(data)
+    subjects = get_subjects()
+    display_subjects(subjects)
 
 
-def get_data():
+def get_subjects():
     """Read data from file formatted like: subject,lecturer,number of students."""
+    subject = []
     input_file = open(FILENAME)
     for line in input_file:
         print(line)  # See what a line looks like
@@ -23,11 +25,14 @@ def get_data():
         parts[2] = int(parts[2])  # Make the number an integer (ignore PyCharm's warning)
         print(parts)  # See if that worked
         print("----------")
+        subject.append(parts)
     input_file.close()
+    return subject
 
 
-def display_data(data):
-    for subject in data:
+def display_subjects(subjects):
+    for subject in subjects:
+        # TODO  requires formatting, refer to lecture 22/06 to use length of max
         print(f"{subject[0]} is taught by {subject[1]} and has {subject[2]} students")
 
 
