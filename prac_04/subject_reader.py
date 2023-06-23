@@ -26,4 +26,9 @@ def get_data():
     input_file.close()
 
 
+def display_data(data):
+    for subject in data:
+        print(f"{subject[0]} is taught by {subject[1]} and has {subject[2]} students")
+
+
 main()
