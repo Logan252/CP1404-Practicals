@@ -45,3 +45,5 @@ print(numbers_greater_than_9)
 # TODO: (more advanced) use a list comprehension and the join string method
 # to create a string (not list) of the last names for those full names longer than 11 characters
 # the result should be: 'Harlem, Hendrix, Lovelace'
+long_full_names = [name for name in full_names if len(full_names) > 9]
+print(long_full_names)
