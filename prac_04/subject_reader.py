@@ -31,9 +31,10 @@ def get_subjects():
 
 
 def display_subjects(subjects):
-    for subject in subjects:
-        # TODO  requires formatting, refer to lecture 22/06 to use length of max
-        print(f"{subject[0]} is taught by {subject[1]} and has {subject[2]} students")
+    max_length_of_names = max(len(subject[1]) for subject in subjects)
+    max_length_of_students = max(len(str(subject[2])) for subject in subjects)
 
+    for subject in subjects:
+        print(f"{subject[0]} is taught by {subject[1]:<{max_length_of_names}} and has {subject[2]:>{max_length_of_students}} students")
 
 main()
