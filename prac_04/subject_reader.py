@@ -35,6 +35,8 @@ def display_subjects(subjects):
     max_length_of_students = max(len(str(subject[2])) for subject in subjects)
 
     for subject in subjects:
-        print(f"{subject[0]} is taught by {subject[1]:<{max_length_of_names}} and has {subject[2]:>{max_length_of_students}} students")
+        print(
+            f"{subject[0]} is taught by {subject[1]:<{max_length_of_names}} and has {subject[2]:>{max_length_of_students}} students")
+
 
 main()
