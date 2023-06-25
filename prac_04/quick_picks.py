@@ -14,8 +14,10 @@ def main():
         quick_pick = []
         for j in range(NUMBERS_PER_LINE):
             number = random.randint(MINIMUM_LINES, MAXIMUM_LINES)
-            quick_pick.append(number)
-            print(quick_pick)
+            while number in quick_pick:
+                number = random.randint(MINIMUM_LINES, MAXIMUM_LINES)
+                quick_pick.append(number)
+        print(quick_pick)
 
 
 main()
