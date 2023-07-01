@@ -5,17 +5,13 @@ NAME_TO_COLOUR = {"Absolute Zero": "#0048ba", "Acid Green": "b0bf1a", "AliceBlue
 colour_name = input("enter a colour name").lower()
 
 while colour_name != "":
-    matching_names = []
-    colour_code = None
-
-    for name in NAME_TO_COLOUR:
-        if name.lower() == colour_name.lower():
-            matching_names.append(name)
-            colour_code = NAME_TO_COLOUR[name]
-
-    if colour_code is None:
-        print("Sorry, that code is not in this dictionary")
+    matching_names = [name for name in NAME_TO_COLOUR if name.lower() == colour_name.lower()]
+    if len(matching_names) == 0:
+        print("Sorry, that code is not in this dictionary.")
     else:
         for name in matching_names:
-            print(f"The hexadecimal code for {colour_name} is {NAME_TO_COLOUR.get(colour_name)}")
-    colour_name = input("Enter a colour name: ").lower()
+            print(f"The hexadecimal code for {name} is {NAME_TO_COLOUR[name]}.")
+
+    colour_name = input("Enter a colour name: ")
+
+
