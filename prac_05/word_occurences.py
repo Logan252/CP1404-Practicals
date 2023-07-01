@@ -1,5 +1,5 @@
 """Estimated time: 20 minutes
-Actual time: 54 minutes"""
+Actual time: 65 minutes"""
 
 
 def main():
@@ -25,6 +25,10 @@ def count_word_occurrences(input_string):
 
 
 def display_word_occurrences(word_counts):
+    max_length = max(len(word) for word in word_counts)
     print("Word occurrences in the string:")
     for word, count in word_counts.items():
-        print(f"{word}: {count}")
+        print(f"{word:<{max_length}}: {count}")
+
+
+main()
