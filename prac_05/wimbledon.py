@@ -1,5 +1,4 @@
 FILENAME = 'wimbledon.csv'
-data = []
 
 
 def main():
@@ -40,7 +39,7 @@ def get_records(filename):
 
 
 def display_records(champions_count, countries):
-    print("Champions and how many times they've won")
+    print("Wimbledon Champions:")
     for champion, count in champions_count.items():
         print(champion, count)
     print(f"These {len(countries)} countries have won wimbledon:")
