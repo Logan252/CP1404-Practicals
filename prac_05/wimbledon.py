@@ -42,8 +42,8 @@ def get_records(filename):
 def display_records(champions_count, countries):
     print("Champions and how many times they've won")
     for champion, count in champions_count.items():
-        print(f"{champion}: {count} time(s)")
-    print(f" These {count} countries have won wimbledon: \n{countries}")
+        print(champion, count)
+    print(f" These {len(countries)} countries have won wimbledon: \n{countries}")
 
 
 main()
