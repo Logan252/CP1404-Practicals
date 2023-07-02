@@ -43,7 +43,8 @@ def display_records(champions_count, countries):
     print("Champions and how many times they've won")
     for champion, count in champions_count.items():
         print(champion, count)
-    print(f" These {len(countries)} countries have won wimbledon: \n{countries}")
+    print(f"These {len(countries)} countries have won wimbledon:")
+    print(", ".join(country for country in sorted(countries)))
 
 
 main()
