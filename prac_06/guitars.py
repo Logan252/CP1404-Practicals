@@ -28,7 +28,7 @@ def main():
         print("Guitar {0}: {1.name:>20} ({1.year}), worth ${1.cost:10,.2f}{2}".format(i, guitar, vintage_string))
 
     else:
-        print("No guitars :( Quick, go and buy one!")
+        print("No guitars left :( Quick, go and buy one!")
 
 
 if __name__ == "__main__":
