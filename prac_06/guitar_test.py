@@ -1,4 +1,5 @@
-"""Test program for guitar class program"""
+"""Test program for guitar class program
+    This form of testing is quite 'manual' since we need to read the output and compare it ourselves"""
 from prac_06.guitar import Guitar
 
 CURRENT_YEAR = 2023
