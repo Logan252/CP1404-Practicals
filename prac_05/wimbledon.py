@@ -9,7 +9,7 @@ def main():
 
 def process_records(records):
     """the champions and how many times they have won.
-    the countries of the champions in alphabetical order"""
+    the countries of the champions in alphabetical order """
     champions_count = {}
     countries = set()
 
