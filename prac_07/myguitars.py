@@ -14,7 +14,7 @@ class Guitar:
 
 
 # Function to read guitars from the file and store them in a list of Guitar objects
-def read_guitars_from_file(filename):
+def read_guitars(filename):
     guitars = []
     with open(filename, 'r') as file:
         for line in file:
@@ -38,13 +38,13 @@ def add_guitars(guitars):
 
 
 def display_guitars(guitars):
-    for guitar in guitars:
-        print(f"{guitar.name}, {guitar.year}, ${guitar.cost}")
+    for i, guitar in enumerate(guitars, 1):
+        print(f"{i}. {guitar.name}, {guitar.year}, ${guitar.cost}")
 
 
 if __name__ == "__main__":
     file_name = "guitars.csv"
-    guitars_list = read_guitars_from_file(file_name)
+    guitars_list = read_guitars(file_name)
 
     # Sort by oldest to newest
     guitars_list.sort()
@@ -54,7 +54,6 @@ if __name__ == "__main__":
 
     add_guitars(guitars_list)
 
-    print("\nAll Guitars (including new ones):\n")
     display_guitars(guitars_list)
 
     with open(file_name, 'w') as out_file:
