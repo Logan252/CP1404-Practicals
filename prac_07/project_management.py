@@ -15,18 +15,19 @@ def main():
     menu_choice, menu_string = display_menu()
     while menu_choice != 'Q':
         if menu_choice == 'L':
-
+            file_name = input("Enter filename to load projects from: ")
+            projects_list = load_projects(file_name)
         elif menu_choice == 'S':
-
-
+            file_name = input("Enter filename to save projects to: ")
+            save_projects(file_name, projects_list)
         elif menu_choice == 'D':
-
+            display_projects(projects_list)
         elif menu_choice == 'F':
-
+            pass
         elif menu_choice == 'A':
-
+            add_project(projects_list)
         elif menu_choice == 'U':
-
+            update_project(projects_list)
         else:
             print("Invalid menu choice")
 
@@ -48,7 +49,7 @@ def display_menu():
 def load_projects(filename):
     projects = []
     with open(filename, 'r') as file:
-        next(file)  # Skip the header line
+        file.readline()  # Skip the header line
         for line in file:
             name, start_date_str, priority, estimate, completion = line.strip().split('\t')
             start_date = datetime.datetime.strptime(start_date_str, "%d/%m/%Y").date()
@@ -60,8 +61,13 @@ def load_projects(filename):
     return projects
 
 
-def save_projects(filename):
-    pass
+def save_projects(filename, projects):
+    with open(filename, 'w') as file:
+        # \t is more concise and personal preference over f-strings in this case
+        file.write("Name\tStart Date\tPriority\tEstimate\tCompletion\n")
+        for project in projects:
+            file.write(f"{project.name}\t{project.start_date.strftime('%d/%m/%Y')}\t"
+                       f"{project.priority}\t{project.estimate:.2f}\t{project.completion}\n")
 
 
 def display_projects(projects):
@@ -77,11 +83,15 @@ def display_projects(projects):
         print(f"  {project}")
 
 
+def update_project(project_list):
+    pass
+
+
 def sort_projects():
     pass
 
 
-def add_project():
+def add_project(projects):
     pass
 
 
