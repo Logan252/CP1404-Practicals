@@ -1,6 +1,6 @@
 # CP1404 Practicals
 
-Class CP1404 for Logan Buttenshaw in trimester 1, 2023.
+Class CP1404 for Logan Buttenshaw in trimester 2, 2023.
 
 ## 3 main lessons learned about clean code in the subject:
 
