@@ -26,7 +26,17 @@ def read_guitars_from_file(filename):
     return guitars
 
 
-# Function to display guitars using a loop
+def add_guitars(guitars):
+    name = input("Please enter a guitar name")
+    while name != "":
+        year = int(input("Year: "))
+        cost = float(input("Cost: $"))
+        guitar_to_add = Guitar(name, year, cost)
+        guitars.append(guitar_to_add)
+        print(guitar_to_add.name, "added.")
+        name = input("Please enter a guitar name")
+
+
 def display_guitars(guitars):
     for guitar in guitars:
         print(f"{guitar.name}, {guitar.year}, ${guitar.cost}")
@@ -41,3 +51,12 @@ if __name__ == "__main__":
 
     print("\nGuitars list sorted by year (oldest to newest):\n")
     display_guitars(guitars_list)
+
+    add_guitars(guitars_list)
+
+    print("\nAll Guitars (including new ones):\n")
+    display_guitars(guitars_list)
+
+    with open(file_name, 'w') as out_file:
+        for guitar in guitars_list:
+            out_file.write(f"{guitar.name},{guitar.year},{guitar.cost}\n")
