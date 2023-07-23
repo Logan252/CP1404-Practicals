@@ -1,6 +1,6 @@
 """ Script to add, organise and read guitars from CSV file.
     Start time: 11:03
-    Finish time: ......"""
+    Finish time: 12:31"""
 
 
 class Guitar:
