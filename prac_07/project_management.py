@@ -1,7 +1,6 @@
 """Start time:8:30
    Estimated finish time: 12:00
-   Actual finish time: 3:07
-   (First 4 hours was done in another file by mistake, start time does not reflect accurately with commit times)"""
+   Actual finish time: 4:07 """
 
 import datetime
 from project import Project
