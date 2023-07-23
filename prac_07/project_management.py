@@ -1,3 +1,8 @@
+"""Start time:8:30
+   Estimated finish time: 12:00
+   Actual finish time: 3:07
+   (First 4 hours was done in another file by mistake, start time does not reflect accurately with commit times)"""
+
 import datetime
 from project import Project
 
@@ -121,7 +126,7 @@ def filtered_projects_by_date(projects):
 
 
 def add_project(projects):
-    print("Let's add a new project")
+    print("Add a new project")
     name = input("Name: ")
     start_date_string = input("Start date (dd/mm/yyyy): ")
     priority_str = input("Priority: ")
@@ -129,6 +134,8 @@ def add_project(projects):
     completion_str = input("Percent complete: ")
 
     try:
+        # if the slashes aren't inputted by the user, it has to finish inputting all the data to say it was invalid,
+        # requires fixing.
         start_date = datetime.datetime.strptime(start_date_string, "%d/%m/%Y").date()
         priority = int(priority_str)
         estimate = float(estimate_str)
