@@ -1,29 +1,22 @@
-""" Start time: 1:00
-    expected finish time: 5:15
-    Actual finish time:"""
-
-# Use the datetime module for the project start date
 import datetime
-# Note for self, CP1404 must be open, not just prac_07 for import to work
-from prac_07.project import Project
+from project import Project
 
 FILE_NAME = "projects.txt"
 
 
 def main():
     projects_list = load_projects(FILE_NAME)
-    menu_choice, menu_string = display_menu()
+
+    menu_choice = display_menu()
     while menu_choice != 'Q':
         if menu_choice == 'L':
-            file_name = input("Enter filename to load projects from: ")
-            projects_list = load_projects(file_name)
+            projects_list = load_projects(FILE_NAME)
         elif menu_choice == 'S':
-            file_name = input("Enter filename to save projects to: ")
-            save_projects(file_name, projects_list)
+            save_projects(FILE_NAME, projects_list)
         elif menu_choice == 'D':
             display_projects(projects_list)
         elif menu_choice == 'F':
-            pass
+            filtered_projects_by_date(projects_list)
         elif menu_choice == 'A':
             add_project(projects_list)
         elif menu_choice == 'U':
@@ -63,7 +56,6 @@ def load_projects(filename):
 
 def save_projects(filename, projects):
     with open(filename, 'w') as file:
-        # \t is more concise and personal preference over f-strings in this case
         file.write("Name\tStart Date\tPriority\tEstimate\tCompletion\n")
         for project in projects:
             file.write(f"{project.name}\t{project.start_date.strftime('%d/%m/%Y')}\t"
@@ -76,23 +68,77 @@ def display_projects(projects):
 
     print("Incomplete projects:")
     for project in incomplete_projects:
-        print(f"  {project}")
+        print(f"  {project.name}, Start date: {project.start_date.strftime('%d/%m/%Y')}, "
+              f"Priority: {project.priority}, Estimate: ${project.estimate:.2f}, "
+              f"Completion: {project.completion}%")
 
     print("Completed projects:")
     for project in completed_projects:
-        print(f"  {project}")
+        print(f"  {project.name}, Start date: {project.start_date.strftime('%d/%m/%Y')}, "
+              f"Priority: {project.priority}, Estimate: ${project.estimate:.2f}, "
+              f"Completion: {project.completion}%")
 
 
-def update_project(project_list):
-    pass
+def update_project(projects):
+    print("Projects:")
+    for i, project in enumerate(projects):
+        print(f"{i} {project.name}, Start date: {project.start_date.strftime('%d/%m/%Y')}, "
+              f"Priority: {project.priority}, Estimate: ${project.estimate:.2f}, "
+              f"Completion: {project.completion}%")
+
+    choice = int(input("Project choice: "))
+    if 0 <= choice < len(projects):
+        project = projects[choice]
+        new_completion_str = input("New Percentage: ")
+        if new_completion_str.isdigit():
+            new_completion = int(new_completion_str)
+            project.completion = new_completion
+
+        new_priority_str = input("New Priority: ")
+        if new_priority_str.isdigit():
+            new_priority = int(new_priority_str)
+            project.priority = new_priority
+
+        print(f"{project.name} updated.")
+    else:
+        print("Invalid choice.")
 
 
-def sort_projects():
-    pass
+def filtered_projects_by_date(projects):
+    date_string = input("Show projects that start after date (dd/mm/yyyy): ")
+    try:
+        filter_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+        filtered_projects = [project for project in projects if project.start_date > filter_date]
+        filtered_projects.sort(key=lambda x: x.start_date)
+
+        print("Filtered projects:")
+        for project in filtered_projects:
+            print(f"  {project.name}, Start date: {project.start_date.strftime('%d/%m/%Y')}, "
+                  f"Priority: {project.priority}, Estimate: ${project.estimate:.2f}, "
+                  f"Completion: {project.completion}%")
+    except ValueError:
+        print("Invalid date format. Use dd/mm/yyyy.")
 
 
 def add_project(projects):
-    pass
+    print("Let's add a new project")
+    name = input("Name: ")
+    start_date_string = input("Start date (dd/mm/yyyy): ")
+    priority_str = input("Priority: ")
+    estimate_str = input("Cost estimate: $")
+    completion_str = input("Percent complete: ")
+
+    try:
+        start_date = datetime.datetime.strptime(start_date_string, "%d/%m/%Y").date()
+        priority = int(priority_str)
+        estimate = float(estimate_str)
+        completion = int(completion_str)
+
+        new_project = Project(name, start_date, priority, estimate, completion)
+        projects.append(new_project)
+        print(f"{new_project.name} added.")
+    except ValueError:
+        print("Invalid input format. Please enter valid values for priority, estimate, and completion.")
 
 
 if __name__ == "__main__":
