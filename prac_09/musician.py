@@ -27,6 +27,9 @@ class Musician:
             return f"{self.name} needs an instrument!"
         return f"{self.name} is playing: {self.instruments[0]}"
 
+    def get_instruments(self):
+        return self.instruments
+
 
 if __name__ == '__main__':
     from guitar import Guitar

@@ -9,11 +9,12 @@ class Band:
 
     def play(self):
         for musician in self.musicians:
-            instrument = musician.get_instrument()
-            if instrument is None:
+            instrument = musician.get_instruments()
+            if not instrument:
                 print(f"{musician.name} needs an instrument!")
             else:
-                print(f"{musician.name} is playing: {instrument}")
+                for inst in instrument:
+                    print(f"{musician.name} is playing: {inst}")
 
     def __str__(self):
         result = f"{self.band_name} (str)\n"
@@ -23,5 +24,5 @@ class Band:
 
 
 if __name__ == "__main__":
-
-
+    from musician import Musician
+    from guitar import Guitar
